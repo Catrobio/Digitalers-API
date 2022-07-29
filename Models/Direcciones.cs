@@ -1,5 +1,6 @@
 ﻿namespace DigitlaerApi.Models
 {
+    //Clase Direcciones 
     public class Direcciones 
     {
         public int Id { get; set; }

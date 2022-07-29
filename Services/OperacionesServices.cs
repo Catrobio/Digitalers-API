@@ -1,6 +1,8 @@
-﻿namespace DigitlaerApi.Services
+﻿using DigitalersLib.Operaciones;
+
+namespace DigitlaerApi.Services
 {
-    public class OperacionesServices
+    public class OperacionesServices : Operarios
     {
         public decimal OpercionMatematica(decimal a, decimal b, string operacion)
         {
@@ -23,6 +25,11 @@
             }
 
             return resultado;
+        }
+
+        public decimal[] GetSueldosOperarios()
+        {            
+            return sueldos;
         }
     }
 }

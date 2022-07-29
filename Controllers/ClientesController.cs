@@ -2,7 +2,7 @@
 using DigitlaerApi.Services;
 using DigitlaerApi.Models;
 
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+//Todos los endpoint de clientes 
 
 namespace DigitlaerApi.Controllers
 {
@@ -11,12 +11,15 @@ namespace DigitlaerApi.Controllers
     [ApiController]
     public class ClientesController : ControllerBase
     {
-        private ClientesServices clienteServices = new ClientesServices();
+        //Instancio la clase ClientesDatosServices para poder acceder a todos sus metdos (Dependiendo del nivel de acceso)
+
+        private ClientesDatosServices clienteDatosServices = new ClientesDatosServices();
+
         // GET: api/<ClientesController>
         [HttpGet]
         public Clientes Get()
         {            
-            var clienteResult = clienteServices.GetClientes();
+            var clienteResult = clienteDatosServices.GetClientes();
             return clienteResult;
         }
 
@@ -31,7 +34,19 @@ namespace DigitlaerApi.Controllers
         [HttpPost]
         public Clientes Post([FromBody] Clientes parametro)
         {
-            return clienteServices.SetClientes(parametro);
+            return clienteDatosServices.SetClientes(parametro);
+        }
+
+        [HttpGet("ClienteYTelefono")]
+        public Clientes PostClienteYTelefono(Telefonos telefono)
+        {
+            return clienteDatosServices.setClientesDatos(telefono);
+        }
+
+        [HttpGet("consultas")]
+        public string[] Getconsultas()
+        {
+            return clienteDatosServices.getConsultas();
         }
 
         // PUT api/<ClientesController>/5
